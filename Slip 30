@@ -1,0 +1,54 @@
+//PHP
+Q1)
+//HTML File
+<html>
+<form action=slip30.php method=get>
+Enter Comp. Name<input type=text name=t1><br>
+<input type=submit value="Display Ranker">
+</form>
+</html>
+
+//PHP File
+<?php
+$con=pg_connect("host=localhost user=postgres password=nrc dbname=slip30");
+$cn=$_GET['t1'];
+$rs=pg_query($con,"select * from student,competition,stud_comp where cname='$cn'
+and srank=1 and id=sid and competition.cno=stud_comp.cno");
+while($row=pg_fetch_array($rs))
+{
+ echo "$row[0] $row[1] $row[2]<br>";
+}
+?>
+
+
+
+
+
+//DS
+Q2A)
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.random.randn(50)
+y = np.random.randn(50)
+plt.plot(x,y)
+plt.show()
+plt.scatter(x,y,color=’green’)
+plt.show()
+plt.hist(x,color=’yellow’)
+plt.show()
+plt.boxplot(y, vert=False)
+plt.show()
+
+Q2B)
+from matplotlib import pyplot as plt
+import numpy as np
+# Creating dataset
+subjects = ['TCS', 'Data Science', 'OS',
+        'JAVA', 'PHP', 'Python']
+marks = [23, 17, 35, 29, 12, 33]
+ # Creating plot
+fig = plt.figure(figsize =(10, 7))
+plt.pie(marks, labels = subjects)
+ # show plot
+plt.show()
+
